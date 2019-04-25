@@ -1,0 +1,26 @@
+.list
+{
+  display: table;
+  margin: auto;
+
+}
+#win10List
+{
+  display: inline;
+  list-style: inside;
+}
+li
+{
+  margin: 5px;
+}
+.version
+{
+  color:grey;
+  margin: 5px;
+  padding-right: 50px;
+  text-align: right;
+}
+.user
+{
+  margin: 5px;
+}

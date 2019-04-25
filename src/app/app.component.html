@@ -1,21 +1,73 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    {{ appTitle }}
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <img width="100" alt="virtualizationLogo" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="version">
+    <label>{{version}}</label>
+  </div>
+<div class="list">
+  <ul id ="win7list">
+    <li>
+          <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+          <label>Windows7 Port:8000</label>
+          <label>&nbsp;</label>
+          <select [(ngModel)]="userArray[0]" (change)= "selected()">
+            <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+          </select>
+    </li>
+    <li>
+            <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+            <label>Windows7 Port:8001</label>
+            <label>&nbsp;</label>
+            <select [(ngModel)]="userArray[1]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select>
+    </li>
+    <li>
+            <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+            <label>Windows7 Port:8002</label>
+            <label>&nbsp;</label>
+            <select [(ngModel)]="userArray[2]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select>
+    </li>
+  </ul>
+</div>
+<div class="list">
+  <ul id ="win10list">
+    <li>
+            <label>&nbsp;</label><label>&nbsp;</label>
+            <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+            <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+            <label>Windows10 Port:5030</label>
+            <label>&nbsp;</label>
+            <select [(ngModel)]="userArray[3]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select>
+    </li>
+    <li>
+        <label>&nbsp;</label><label>&nbsp;</label>
+        <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+        <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+        <label>Windows10 Port:5031</label>
+        <label>&nbsp;</label>
+        <select [(ngModel)]="userArray[4]" (change)= "selected()">
+          <option *ngFor="let item of users" [ngValue]="item" >{{item.viewValue}}</option>
+        </select>
+    </li>
+    <li>
+        <label>&nbsp;</label><label>&nbsp;</label>
+        <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+        <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+        <label>Windows10 Port:5032</label>
+        <label>&nbsp;</label>
+        <select [(ngModel)]="userArray[5]" (change)= "selected()">
+          <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+        </select>
+    </li>
+  </ul>
+</div>
 <router-outlet></router-outlet>
