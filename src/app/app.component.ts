@@ -6,6 +6,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import json from '../assets/data/settings.json';
+import * as FileSaver from 'file-saver';
 
 export interface Users {
   value: any;
@@ -22,6 +23,8 @@ export class AppComponent {
   title = 'vm-app';
   appTitle = 'Virtual Machine Manager';
   version = 'V01.00.38';
+  jsonPath = '../assets/data/settings.json';
+  jsonName = 'settings.json';
 
   selectedUserW78000;
   selectedUserW78001;
@@ -43,19 +46,25 @@ export class AppComponent {
     {value: 6, viewValue: 'Michal'},
     {value: 7, viewValue: 'Krystian'}
   ]
+   constructor (private httpClient : HttpClient){}
    ngOnInit(): void {
     let counter = 0;
-    console.dir(json)
     for (let key in json) {
-      console.log(key)
-      this.userArray[counter] = json[key]
-      console.log(json[key])
+      this.userArray[counter] = this.users[json[key]]
       counter++;
     }
    }
-   selected (){
-     this.userArray.forEach(element => {
-       console.log(element)
-     });
-   }
+   selected(){
+    let mockup = json,
+        counter = 0;
+    for (let key in json) {
+      json[key] = this.userArray[counter].value;
+      console.log(this.userArray[counter].value);
+      counter++;
+    }
+    let body = JSON.stringify({mockup});
+    console.log(body);
+    let blob = new Blob([body], {type: 'text/plain;charset=utf-8'});
+    FileSaver.saveAs(blob,this.jsonName);
+  }
 }
