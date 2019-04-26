@@ -62,7 +62,7 @@ export class AppComponent {
       console.log(this.userArray[counter].value);
       counter++;
     }
-    let body = JSON.stringify({mockup});
+    let body = JSON.stringify(mockup);
     console.log(body);
     let blob = new Blob([body], {type: 'text/plain;charset=utf-8'});
     FileSaver.saveAs(blob,this.jsonName);

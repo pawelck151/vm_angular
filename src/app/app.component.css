@@ -24,3 +24,20 @@ li
 {
   margin: 5px;
 }
+
+.circle{
+  height:15px;
+  width:15px;
+  border:1.5px solid black;
+  border-radius: 15px;
+  margin-bottom:-4px;
+}
+.red{
+  background-color:red;
+}
+.green{
+  background-color:green;
+}
+.circle_inline{
+display: inline-block;
+}
