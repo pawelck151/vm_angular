@@ -17,7 +17,7 @@
           <label>&nbsp;</label>
           <select [(ngModel)]="userArray[0]" (change)= "selected()">
             <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
-          </select><label *ngIf="userArray[0].viewValue == 'Free' then greenCircle else redCircle"></label>
+          </select><div *ngIf="userArray[0].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[0].viewValue == 'Blocked' then greyCircle"></div>
     </li>
     <li>
             <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
@@ -25,7 +25,7 @@
             <label>&nbsp;</label>
             <select [(ngModel)]="userArray[1]" (change)= "selected()">
               <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
-            </select><label *ngIf="userArray[1].viewValue == 'Free' then greenCircle else redCircle"></label>
+            </select><div *ngIf="userArray[1].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[1].viewValue == 'Blocked' then greyCircle"></div>
     </li>
     <li>
             <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
@@ -33,7 +33,7 @@
             <label>&nbsp;</label>
             <select [(ngModel)]="userArray[2]" (change)= "selected()">
               <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
-            </select><label *ngIf="userArray[2].viewValue == 'Free' then greenCircle else redCircle"></label>
+            </select><div *ngIf="userArray[2].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[2].viewValue == 'Blocked' then greyCircle"></div>
     </li>
   </ul>
 </div>
@@ -47,7 +47,7 @@
             <label>&nbsp;</label>
             <select [(ngModel)]="userArray[3]" (change)= "selected()">
               <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
-            </select><label *ngIf="userArray[3].viewValue == 'Free' then greenCircle else redCircle"></label>
+            </select><div *ngIf="userArray[3].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[3].viewValue == 'Blocked' then greyCircle"></div>
     </li>
     <li>
         <label>&nbsp;</label><label>&nbsp;</label>
@@ -57,7 +57,7 @@
         <label>&nbsp;</label>
         <select [(ngModel)]="userArray[4]" (change)= "selected()">
           <option *ngFor="let item of users" [ngValue]="item" >{{item.viewValue}}</option>
-        </select><label *ngIf="userArray[4].viewValue == 'Free' then greenCircle else redCircle"></label>
+        </select><div *ngIf="userArray[4].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[4].viewValue == 'Blocked' then greyCircle"></div>
     </li>
     <li>
         <label>&nbsp;</label><label>&nbsp;</label>
@@ -68,7 +68,7 @@
         <select [(ngModel)]="userArray[5]" (change)= "selected()">
           <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
 
-        </select><div *ngIf="userArray[5].viewValue == 'Free' then greenCircle else redCircle"></div>
+        </select><div *ngIf="userArray[5].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[5].viewValue == 'Blocked' then greyCircle"></div>
     </li>
   </ul>
 </div>
@@ -77,3 +77,19 @@
 
 <ng-template #redCircle>&nbsp;<div class='circle red circle_inline'></div></ng-template>
 <ng-template #greenCircle>&nbsp;<div class='circle green circle_inline'></div></ng-template>
+<<ng-template #greyCircle>&nbsp;<div class='circle grey circle_inline'></div></ng-template>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
+    authDomain: "vmmanager-fabbf.firebaseapp.com",
+    databaseURL: "https://vmmanager-fabbf.firebaseio.com",
+    projectId: "vmmanager-fabbf",
+    storageBucket: "vmmanager-fabbf.appspot.com",
+    messagingSenderId: "882512572300"
+  };
+  firebase.initializeApp(config);
+</script>

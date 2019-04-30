@@ -6,7 +6,6 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import json from '../assets/data/settings.json';
-import * as FileSaver from 'file-saver';
 
 export interface Users {
   value: any;
@@ -44,7 +43,8 @@ export class AppComponent {
     {value: 4, viewValue: 'Grzegorz'},
     {value: 5, viewValue: 'Raman'},
     {value: 6, viewValue: 'Michal'},
-    {value: 7, viewValue: 'Krystian'}
+    {value: 7, viewValue: 'Krystian'},
+    {value: 8, viewValue: 'Blocked'}
   ]
    constructor (private httpClient : HttpClient){}
    ngOnInit(): void {
@@ -65,6 +65,9 @@ export class AppComponent {
     let body = JSON.stringify(mockup);
     console.log(body);
     let blob = new Blob([body], {type: 'text/plain;charset=utf-8'});
-    FileSaver.saveAs(blob,this.jsonName);
+    //FileSaver.saveAs(blob,this.jsonName);
+
   }
+
+
 }

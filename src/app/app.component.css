@@ -38,6 +38,9 @@ li
 .green{
   background-color:green;
 }
+.grey{
+  background-color: grey;
+}
 .circle_inline{
 display: inline-block;
 }
