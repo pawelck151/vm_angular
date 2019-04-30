@@ -1,24 +1,21 @@
+h1{
+  color: black;font-family: 'Pacifico', cursive; font-size: 50px; font-weight: 100; line-height: 50px; padding: 0 0 0 40px;
+}
+
 .list
 {
   display: table;
   margin: auto;
-
 }
-#win10List
+.list-group-item
 {
-  display: inline;
-  list-style: inside;
-}
-li
-{
-  margin: 5px;
+  width: 25rem;
 }
 .version
 {
-  color:grey;
-  margin: 5px;
-  padding-right: 50px;
-  text-align: right;
+  color: #d54d7b; font-family: "italic"; font-size: 20px;
+  top: 30;
+  width: 100%;; text-align: right;
 }
 .user
 {
@@ -45,11 +42,22 @@ li
 display: inline-block;
 }
 .footer{
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: green;
   color: white;
   text-align: center;
+  position: fixed;
+}
+.custom-select{
+  width: 50%;
+}
+label{
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.1rem;
+}
+.all{
+  background: #61b361;
+  height: -webkit-fill-available
 }
