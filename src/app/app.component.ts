@@ -6,6 +6,10 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import json from '../assets/data/settings.json';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+import { environment } from 'src/environments/environment.prod.js';
 
 export interface Users {
   value: any;
@@ -24,16 +28,28 @@ export class AppComponent {
   version = 'V01.00.38';
   jsonPath = '../assets/data/settings.json';
   jsonName = 'settings.json';
+  app:firebase.app.App = firebase.initializeApp(
+    {
+      apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
+      authDomain: "vmmanager-fabbf.firebaseapp.com",
+      databaseURL: "https://vmmanager-fabbf.firebaseio.com",
+      projectId: "vmmanager-fabbf",
+      storageBucket: "vmmanager-fabbf.appspot.com",
+      messagingSenderId: "882512572300"
+    }
+  );
+  myRef;
 
-  selectedUserW78000;
-  selectedUserW78001;
-  selectedUserW78002;
-  selectedUserW105030;
-  selectedUserW105031;
-  selectedUserW105032;
+  selectedUserW105030 = {value: 0, viewValue: 'Free'};
+  selectedUserW105031 = {value: 0, viewValue: 'Free'};
+  selectedUserW105032 = {value: 0, viewValue: 'Free'};
+  selectedUserW78000 = {value: 0, viewValue: 'Free'};
+  selectedUserW78001 = {value: 0, viewValue: 'Free'};
+  selectedUserW78002 = {value: 0, viewValue: 'Free'};
 
 
-  userArray = [this.selectedUserW78000, this.selectedUserW78001, this.selectedUserW78002, this.selectedUserW105030, this.selectedUserW105031, this.selectedUserW105032];
+
+  userArray = [this.selectedUserW105030, this.selectedUserW105031, this.selectedUserW105032, this.selectedUserW78000, this.selectedUserW78001, this.selectedUserW78002];
 
   users : Users[] = [
     {value: 0, viewValue: 'Free'},
@@ -48,26 +64,29 @@ export class AppComponent {
   ]
    constructor (private httpClient : HttpClient){}
    ngOnInit(): void {
-    let counter = 0;
-    for (let key in json) {
-      this.userArray[counter] = this.users[json[key]]
-      counter++;
-    }
+    let result,
+        counter = 0;
+    this.app.database().ref('userArray').once('value').then(
+      (data) => {
+                  result = data.val();
+                  for (let key in result) {
+                                            this.userArray[counter] = this.users[result[key]]
+                                            console.log(`KEY READ : ${ key }, \nRESULT [KEY] ${ result[key]} \nVIEW VALUE ${this.users[result[key]]}`);
+                                            counter++;
+                                          }
+    });
+
    }
    selected(){
     let mockup = json,
         counter = 0;
     for (let key in json) {
       json[key] = this.userArray[counter].value;
-      console.log(this.userArray[counter].value);
+      console.log(this.userArray[counter]);
       counter++;
     }
-    let body = JSON.stringify(mockup);
-    console.log(body);
-    let blob = new Blob([body], {type: 'text/plain;charset=utf-8'});
-    //FileSaver.saveAs(blob,this.jsonName);
-
+    //let body = JSON.stringify(mockup);
+    this.app.database().ref('userArray').update(mockup);
   }
-
 
 }
