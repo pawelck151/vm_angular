@@ -1,6 +1,10 @@
 h1{
   color: black;font-family: 'Pacifico', cursive; font-size: 50px; font-weight: 100; line-height: 50px; padding: 0 0 0 40px;
 }
+label{
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.1rem;
+}
 
 .list
 {
@@ -52,10 +56,6 @@ display: inline-block;
 }
 .custom-select{
   width: 50%;
-}
-label{
-  font-family: 'Anton', sans-serif;
-  letter-spacing: 0.1rem;
 }
 .all{
   background: #61b361;

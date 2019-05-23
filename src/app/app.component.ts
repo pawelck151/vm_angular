@@ -13,9 +13,8 @@ import { environment } from 'src/environments/environment.prod.js';
 
 export interface Users {
   value: any;
-  viewValue: String;
+  viewValue: string;
 }
-
 
 @Component({
   selector: 'app-root',
@@ -25,9 +24,12 @@ export interface Users {
 export class AppComponent {
   title = 'vm-app';
   appTitle = 'Virtual Machine Manager';
-  version = 'V01.00.38';
+  version = 'V01.00.42 1477';
   jsonPath = '../assets/data/settings.json';
   jsonName = 'settings.json';
+  win10logo = 'http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png';
+  win7logo = 'http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png';
+
   app:firebase.app.App = firebase.initializeApp(
     {
       apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
@@ -71,7 +73,6 @@ export class AppComponent {
                   result = data.val();
                   for (let key in result) {
                                             this.userArray[counter] = this.users[result[key]]
-                                            console.log(`KEY READ : ${ key }, \nRESULT [KEY] ${ result[key]} \nVIEW VALUE ${this.users[result[key]]}`);
                                             counter++;
                                           }
     });
@@ -82,7 +83,6 @@ export class AppComponent {
         counter = 0;
     for (let key in json) {
       json[key] = this.userArray[counter].value;
-      console.log(this.userArray[counter]);
       counter++;
     }
     //let body = JSON.stringify(mockup);
